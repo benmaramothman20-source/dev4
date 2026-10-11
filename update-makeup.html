@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div>
+    <h2>Modifier un Makeup :</h2>
+  </div>
+
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Makeup</label>
+      <input
+        readonly
+        type="text"
+        [(ngModel)]="currentMakeup.idMakeup"
+        name="idMakeup"
+        class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Makeup</label>
+      <input
+        type="text"
+        [(ngModel)]="currentMakeup.nomMakeup"
+        name="nomMakeup"
+        class="form-control">
+    </div>
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix Makeup</label>
+      <input
+        type="number"
+        [(ngModel)]="currentMakeup.prix"
+        name="prix"
+        class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input
+        type="date"
+        [ngModel]="currentMakeup.dateCreation | date:'yyyy-MM-dd'"
+        (ngModelChange)="changerDate($event)"
+        name="dateCreation"
+        class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Categorie</label>
+        <select class="form-select" [(ngModel)]="updatedCatId" name="updatedCatId">
+            <option *ngFor="let cat of categories" [ngValue]="cat.idCat">
+                {{ cat.nomCat }}
+            </option>
+        </select>
+    </div>
+
+    <div class="mt-2">
+      <button
+        type="button"
+        (click)="updateMakeup()"
+        class="btn btn-success">
+        Modifier
+      </button>
+    </div>
+ 
+

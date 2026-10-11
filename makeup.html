@@ -1,0 +1,60 @@
+
+
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+
+      @if (makeups.length != 0) {
+
+        <table class="table table-striped">
+
+          <thead>
+            <tr>
+              <th>N</th>
+              <th>id</th>
+              <th>nom</th>
+              <th>prix</th>
+              <th>dateCreation</th>
+              <th>Catégorie</th>
+              <th>Supprimer</th>
+              <th>Modifier</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @for (makeup of makeups; track makeup.idMakeup; let index = $index) {
+
+              <tr>
+                <td>{{ index }}</td>
+                <td>{{ makeup.idMakeup }}</td>
+                <td>{{ makeup.nomMakeup }}</td>
+                <td>{{ makeup.prix }}</td>
+                <td>{{ makeup.dateCreation | date:'dd/MM/yyyy' }}</td>
+                <td>{{makeup.categorie?.nomCat}}</td>
+
+                <td>
+                  <a class="btn btn-danger" (click)="supprimerMakeup(makeup)">
+                    Supprimer
+                  </a>
+                </td>
+
+                <td>
+                  <a class="btn btn-success"
+                     [routerLink]="['/updateMakeup', makeup.idMakeup]">
+                    Modifier
+                  </a>
+                </td>
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      }
+
+    </div>
+  </div>
+</div>
